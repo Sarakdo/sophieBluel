@@ -320,13 +320,16 @@ footer nav ul {
   color: white;
   background-color: #1d6154;
 }
-.filters.off {
-  opacity: 1;
-  visibility: visible;
-}
 .filters.on {
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.filters.off {
   visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 /*		login  */
 
@@ -392,10 +395,10 @@ footer nav ul {
   text-align: center;
   padding-top: 20px;
 }
-.banner_edit_mode.off {
+.off {
   display: none;
 }
-.banner_edit_mode.on {
+.on {
   display: block;
 }
 .banner_edit_mode span {
@@ -408,16 +411,17 @@ footer nav ul {
   top: 10px;
   left: calc(50% + 125px);
 }
-.update.off {
+.off {
   display: none;
 }
-.update.on {
+.on {
   display: block;
 }
 
 .update span {
   font-family: "Work Sans";
   font-weight: 400;
+  cursor: pointer;
 }
 
 .portfolio_container {
