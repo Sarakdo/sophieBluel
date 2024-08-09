@@ -19,18 +19,25 @@
 
 <body>
 	<aside class="banner_edit_mode off" aria-hidden="true">
-
 		<i class="fa-solid fa-pen-to-square">
 			<span>Mode édition</span>
 		</i>
 	</aside>
-	<!-- 
+
+	<!-------   modal  --------------------------------- -->
+
 	<aside id="modal1" class="modal" aria-hidden="true" role="modif_gallery" aria-labelledby="tittlemodal">
-		<div="modal-wrapper">
-		<h2 id="titlemodale">Gallerie photo</h2>
-		<a>Ajouter une photo</a>
-		</div>
-	</aside> -->
+		<section class="modal-wrapper">
+			<h2 id="titlemodal">Galerie photo</h2>
+			<i class="fa-solid fa-xmark"></i>
+			<div class="buttonModal">
+				<p>Ajouter une photo</p>
+			</div>
+		</section>
+	</aside>
+
+
+
 
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -65,7 +72,7 @@
 				<h2>Mes Projets</h2>
 				<div class="update off">
 					<i class="fa-solid fa-pen-to-square">
-						<span>modifier</span>
+						<span href="#modal1">modifier</span>
 					</i>
 				</div>
 			</div>
