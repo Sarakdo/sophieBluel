@@ -40,7 +40,6 @@ const errorHandling = (error) => {
 const runWorks = async () => {
   try {
     const works = await getWorks();
-    console.log(works);
     showWorks(works);
   } catch (err) {
     errorHandling(err);

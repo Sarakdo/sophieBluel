@@ -305,7 +305,7 @@ footer nav ul {
   color: white;
 }
 
-.filters.off {
+.filters {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -315,12 +315,19 @@ footer nav ul {
   padding-top: 30px;
   padding-bottom: 50px;
 }
-.filters.on .filterBtnsActive {
+.filters .filterBtnsActive {
   border: none;
   color: white;
   background-color: #1d6154;
 }
-
+.filters.off {
+  opacity: 1;
+  visibility: visible;
+}
+.filters.on {
+  opacity: 0;
+  visibility: hidden;
+}
 /*		login  */
 
 .auth {
@@ -385,31 +392,30 @@ footer nav ul {
   text-align: center;
   padding-top: 20px;
 }
-
 .banner_edit_mode.off {
   display: none;
 }
-
-.banner.on {
+.banner_edit_mode.on {
   display: block;
 }
-
 .banner_edit_mode span {
   font-family: "Work Sans";
   font-weight: 400;
 }
 
-.update_projects.off {
+.update {
   position: absolute;
   top: 10px;
   left: calc(50% + 125px);
+}
+.update.off {
   display: none;
 }
-update_projects.on {
+.update.on {
   display: block;
 }
 
-.update_projects span {
+.update span {
   font-family: "Work Sans";
   font-weight: 400;
 }
