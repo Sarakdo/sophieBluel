@@ -130,9 +130,9 @@ table {
 
 /** end reset css**/
 body {
-  max-width: 1140px;
+  max-width: 1440px;
   min-height: 1080px;
-  margin: auto;
+  margin: 0;
   font-family: "Work Sans";
   font-size: 14px;
   background: #fffef8;
@@ -140,7 +140,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 50px 120px 50px 120px;
 }
 
 header h1 {
@@ -150,6 +150,7 @@ header h1 {
   font-size: 22px;
   font-weight: 800;
   color: #b1663c;
+  padding-left: 10px;
 }
 
 header nav ul a {
@@ -158,6 +159,10 @@ header nav ul a {
 }
 header nav ul a:hover {
   font-weight: bold;
+}
+header img {
+  width: 22px;
+  height: 22px;
 }
 section {
   margin: 50px 0;
@@ -197,29 +202,65 @@ nav li {
 #introduction {
   display: flex;
   align-items: center;
+  margin: 0 200px 0 200px;
 }
 #introduction figure {
   flex: 1;
 }
 #introduction img {
   display: block;
-  margin: auto;
-  width: 80%;
+  width: 474px;
+  height: 355px;
+  margin-top: 52px;
 }
 
 #introduction article {
   flex: 1;
+  margin-top: 102px;
 }
 #introduction h2 {
-  margin-bottom: 1em;
+  margin-bottom: 20px;
+  margin-left: 39px;
 }
 
 #introduction p {
-  margin-bottom: 0.5em;
+  margin-bottom: 15px;
 }
+
+.text_intro {
+  width: 404px;
+  padding: 0 0 54px 39px;
+}
+#portfolio {
+  padding: 0 200px 0 200px;
+}
+
 #portfolio h2 {
   text-align: center;
   margin-bottom: 1em;
+}
+#portfolio button {
+  font-size: 1em;
+  padding: 0 20px;
+  height: 37px;
+  min-width: 100px;
+  margin: 0 10px;
+  border: solid 1px #1d6154;
+  border-radius: 60px;
+  color: #1d6154;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  text-align: center;
+  font-family: Syne;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#portfolio button:hover {
+  cursor: pointer;
+  background-color: #1d6154;
+  color: white;
 }
 
 .gallery {
@@ -279,30 +320,6 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
-}
-
-#portfolio button {
-  font-size: 1em;
-  padding: 0 20px;
-  height: 37px;
-  min-width: 100px;
-  margin: 0 10px;
-  border: solid 1px #1d6154;
-  border-radius: 60px;
-  color: #1d6154;
-  background-color: transparent;
-  transition: background-color 0.2s;
-  text-align: center;
-  font-family: Syne;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-#portfolio button:hover {
-  cursor: pointer;
-  background-color: #1d6154;
-  color: white;
 }
 
 .filters {
@@ -391,7 +408,7 @@ footer nav ul {
   color: white;
   font-size: 16px;
   height: 59px;
-  max-width: 1440px;
+  width: 1440px;
   text-align: center;
   padding-top: 20px;
 }
@@ -418,17 +435,29 @@ footer nav ul {
   display: block;
 }
 
-.update span {
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+.icon-text i {
+  margin-right: 5px;
+}
+.icon-text p {
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
   font-family: "Work Sans";
   font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .portfolio_container {
   position: relative;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+  margin-top: 140px;
+  margin-bottom: 94px;
 }
 
 .login.on,
@@ -462,6 +491,7 @@ footer nav ul {
   flex-shrink: 0;
   z-index: 1;
   position: relative;
+  overflow: auto;
 }
 
 .modal-wrapper i {
@@ -469,6 +499,7 @@ footer nav ul {
   top: 24px;
   right: 24px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .modal-wrapper h2 {
