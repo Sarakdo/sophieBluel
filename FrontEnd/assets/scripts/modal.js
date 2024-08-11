@@ -1,4 +1,24 @@
-let modal = null; /* permet de fermet la modal */
+const displayWorksInModal = (works) => {
+  const modalGallery = document.getElementById("modal-gallery");
+  modalGallery.innerHTML = ""; // Vider la galerie de la modale avant de l'afficher
+  works.forEach((work) => {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const figcaption = document.createElement("figcaption");
+    img.src = work.imageUrl;
+    figcaption.textContent = work.title;
+    figure.classList.add("galleryStyle");
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    modalGallery.appendChild(figure);
+  });
+};
+const initializeModalGallery = async () => {
+  const works = await getWorks(); // Récupère les œuvres depuis l'API
+  displayWorksInModal(works); // Affiche toutes les œuvres dans la modale
+};
+
+let modal = null; /* permet de fermer la modal */
 
 const openModal = function (e) {
   e.preventDefault();

@@ -1,5 +1,6 @@
 // Récupération de tout les works
 const gallery = document.querySelector(".gallery");
+const galleryModal = document.querySelector(".gallery-modal");
 const getWorks = async () => {
   const works = await fetch("http://localhost:5678/api/works");
   const worksJson = await works.json();

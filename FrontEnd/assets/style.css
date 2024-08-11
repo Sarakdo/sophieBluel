@@ -323,8 +323,6 @@ footer nav ul {
 }
 
 .filters {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -341,6 +339,8 @@ footer nav ul {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .filters.off {
@@ -457,7 +457,7 @@ footer nav ul {
 .portfolio_container {
   position: relative;
   margin-top: 140px;
-  margin-bottom: 94px;
+  margin-bottom: 70px;
 }
 
 .login.on,
