@@ -274,6 +274,15 @@ nav li {
 .gallery img {
   width: 100%;
 }
+.gallery-modal {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.gallery-modal img {
+  width: 87px;
+  height: 130px;
+}
 #contact {
   width: 50%;
   margin: auto;
@@ -546,4 +555,8 @@ footer nav ul {
   position: absolute;
   bottom: 135px;
   left: 105px;
+}
+
+.hidden-text {
+  display: none;
 }

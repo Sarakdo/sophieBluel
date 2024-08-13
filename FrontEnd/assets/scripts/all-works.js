@@ -1,5 +1,6 @@
 // Récupération de tout les works
 const gallery = document.querySelector(".gallery");
+
 const getWorks = async () => {
   const works = await fetch("http://localhost:5678/api/works");
   const worksJson = await works.json();
@@ -14,6 +15,7 @@ async function showWorks(arrayWorks, myGallery) {
     const figcaption = document.createElement("figcaption");
     img.src = work.imageUrl;
     figcaption.textContent = work.title;
+    figcaption.classList.add("hidden-text"); // Ajouter une classe pour masquer le texte
     figure.classList.add("galleryStyle");
     figure.appendChild(img);
     figure.appendChild(figcaption);
@@ -27,16 +29,6 @@ const errorHandling = (error) => {
   gallery.appendChild(div);
 };
 
-//* pour savoir ou est le probleme
-/* async function runWorks() {
-  try {
-    const works = await getWorks();
-    showWorks(works);
-  } catch (err) {
-    errorHandling(err);
-  }
-}
- */
 const runWorks = async (myGallery) => {
   try {
     const works = await getWorks();
@@ -47,8 +39,3 @@ const runWorks = async (myGallery) => {
 };
 
 runWorks(gallery);
-
-/*  2e solution */
-/* getWorks()
-  .then((works) => showWorks(works))
-  .catch((err) => errorHandling(err)); */
