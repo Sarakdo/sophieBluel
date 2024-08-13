@@ -1,6 +1,5 @@
 // Récupération de tout les works
 const gallery = document.querySelector(".gallery");
-const galleryModal = document.querySelector(".gallery-modal");
 const getWorks = async () => {
   const works = await fetch("http://localhost:5678/api/works");
   const worksJson = await works.json();
@@ -8,7 +7,7 @@ const getWorks = async () => {
 };
 
 // on affiche dans la page  d'accueil//
-async function showWorks(arrayWorks) {
+async function showWorks(arrayWorks, myGallery) {
   arrayWorks.forEach((work) => {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
@@ -18,7 +17,7 @@ async function showWorks(arrayWorks) {
     figure.classList.add("galleryStyle");
     figure.appendChild(img);
     figure.appendChild(figcaption);
-    gallery.appendChild(figure);
+    myGallery.appendChild(figure);
   });
 }
 // Creation d'un message d'erreur dans le cas d'une erreur survenue//
@@ -38,16 +37,16 @@ const errorHandling = (error) => {
   }
 }
  */
-const runWorks = async () => {
+const runWorks = async (myGallery) => {
   try {
     const works = await getWorks();
-    showWorks(works);
+    showWorks(works, myGallery);
   } catch (err) {
     errorHandling(err);
   }
 };
 
-runWorks();
+runWorks(gallery);
 
 /*  2e solution */
 /* getWorks()

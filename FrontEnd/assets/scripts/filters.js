@@ -15,8 +15,13 @@ const createCategoriesBtn = async () => {
     btn.id = category.id;
     filter.appendChild(btn);
   });
+
   let filterBtns = document.querySelectorAll("button.filter");
   const works = await getWorks(); /* on redéfinit works  */
+
+  const galleryMain = document.querySelector("#gallery");
+  const galleryModal = document.querySelector("#modal-gallery");
+
   for (let filterBtn of filterBtns) {
     filterBtn.addEventListener("click", (e) => {
       btnId = e.target.id;
@@ -26,7 +31,7 @@ const createCategoriesBtn = async () => {
         const filteredWorks = works.filter(
           (work) => work.categoryId === parseInt(btnId)
         );
-        displayWorks(filteredWorks);
+        displayWorks(filteredWorks, galleryMain, galleryModal);
       } else {
         displayWorks(works);
       }
@@ -44,6 +49,7 @@ const displayWorks = (works) => {
     figure.appendChild(img);
     figure.appendChild(figcaption);
     gallery.appendChild(figure);
+    galleryModal.appendChild(figure);
   });
 };
 

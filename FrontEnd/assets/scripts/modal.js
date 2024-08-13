@@ -1,32 +1,17 @@
-const displayWorksInModal = (works) => {
-  const modalGallery = document.getElementById("modal-gallery");
-  modalGallery.innerHTML = ""; // Vider la galerie de la modale avant de l'afficher
-  works.forEach((work) => {
-    const figure = document.createElement("figure");
-    const img = document.createElement("img");
-    const figcaption = document.createElement("figcaption");
-    img.src = work.imageUrl;
-    figcaption.textContent = work.title;
-    figure.classList.add("galleryStyle");
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-    modalGallery.appendChild(figure);
-  });
-};
-const initializeModalGallery = async () => {
-  const works = await getWorks(); // Récupère les œuvres depuis l'API
-  displayWorksInModal(works); // Affiche toutes les œuvres dans la modale
-};
+const galleryModal = document.querySelector(".gallery-modal");
 
 let modal = null; /* permet de fermer la modal */
 
 const openModal = function (e) {
   e.preventDefault();
-  const target = document.querySelector(e.target.getAttribute("href"));
-  target.style.display = null;
+  const target = document.querySelector(
+    e.target.getAttribute("href")
+  ); /*on cible le 1er lien de la modale*/
+  target.style.display =
+    null; /*on affiche la modale en enlevant le display none*/
   target.removeAttribute("aria-hidden");
   target.setAttribute("aria-modal", "true");
-  modal = target; /* on cible la target pour pouvoir la fermer  */
+  modal = target; /* on enregistre la modal dans la cible */
   modal.addEventListener("click", closeModal);
   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
   modal
@@ -55,7 +40,8 @@ const closeModal = function (e) {
 const stopPropagation = function (e) {
   e.stopPropagation();
 };
-
+//pour chaque lien href on appel openModal//
 document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", openModal);
+  runWorks(galleryModal);
 });
