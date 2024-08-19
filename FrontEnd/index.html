@@ -28,16 +28,46 @@
 	<aside id="modal1" class="modal" aria-hidden="true" role="modif_gallery" aria-labelledby="tittlemodal"
 		style="display:none">
 		<section class="modal-wrapper js-modal-stop">
-			<button href="index.html" class="fa-solid fa-xmark js-modal-close"></button>
+			<button class="fa-solid fa-xmark js-modal-close"></button>
 			<h2 id="titlemodal">Galerie photo</h2>
 			<div class="gallery-modal"></div>
+			<!-- 			<button class="fa-solid fa-trash-can delete-btn"></button>-->
 			<div class="line"></div>
-			<div class="buttonModal">
+			<div href="#modal2" class="buttonModal">
 				<p>Ajouter une photo</p>
 			</div>
 		</section>
 	</aside>
 
+	<aside id="modal2" class="modal2" aria-hidden="true" role="modif_gallery" aria-labelledby="tittlemodal">
+		<section class="modal-wrapper2 js-modal-reset">
+			<a href="#modal1" class="fa-solid fa-arrow-left back-arrow"></a>
+			<button class="fa-solid fa-xmark js-modal-close"></button>
+			<h2 id="titlemodal">Ajout photo</h2>
+			<div class="image-upload">
+				<img src="placeholder.png" alt="Image upload" id="uploadedImage">
+				<input type="file" id="imageUpload" accept="image/*">
+				<div class="upload-text">Cliquez pour ajouter une photo</div>
+			</div>
+			<form>
+				<div class="form-group">
+					<label for="title">Titre</label>
+					<input type="text" id="title" name="title" placeholder="Titre">
+				</div>
+
+				<div class="form-group">
+					<label for="category">Catégorie</label>
+					<select id="category" name="category">
+						<option value="">Sélectionner une catégorie</option>
+					</select>
+				</div>
+			</form>
+			<div class="line"></div>
+			<div class="buttonModal2">
+				<p>Valider</p>
+			</div>
+		</section>
+	</aside>
 
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
