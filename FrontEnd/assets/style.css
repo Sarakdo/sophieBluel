@@ -530,7 +530,7 @@ footer nav ul {
   position: relative;
   overflow: auto;
 }
-.modal-wrapper button {
+.js-modal-close {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -540,16 +540,7 @@ footer nav ul {
   border: none;
   color: inherit;
 }
-.modal-wrapper2 button {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-size: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: inherit;
-}
+
 .modal-wrapper h2 {
   color: #000;
   text-align: center;
@@ -616,7 +607,7 @@ footer nav ul {
 }
 .line {
   width: 420px;
-  height: 2px;
+  height: 1px;
   background: #b3b3b3;
   position: absolute;
   bottom: 90px;
@@ -645,29 +636,46 @@ footer nav ul {
   text-decoration: none;
 }
 /* image modal2 */
+
+.logo-upload {
+  width: 76px;
+  font-size: 76px;
+  color: #b9c5cc;
+}
+
 .image-upload {
   position: relative;
-  width: 100%;
-  height: 200px;
+  width: 420px;
+  height: 169px;
   background-color: #e8f1f6;
-  border: 1px dashed #ccc;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  overflow: hidden;
+  margin-left: 100px;
 }
 
 .image-upload input[type="file"] {
   display: none;
 }
 
-.image-upload img {
-  width: 100%;
-  height: 100%;
+.btn-upload {
+  border-radius: 50px;
+  background-color: #cbd6dc;
+  width: 176px;
+  height: 36px;
   object-fit: cover;
+  color: #306685;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
 }
 
 .image-upload .upload-text {
@@ -679,11 +687,23 @@ select {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
   box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  /*   color: transparent;
+ */
 }
 
+.container_form {
+  padding: 0 130px;
+}
+
+.form-group {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
 /* .hidden-text {
   display: none;
 }
