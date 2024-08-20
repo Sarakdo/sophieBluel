@@ -51,6 +51,15 @@ document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", openModal);
   runWorks(galleryModal);
 });
+// creation du lien de la modale2 //
+const buttonModal = document.querySelector(".buttonModal");
+const modal2 = document.getElementById("modal2");
+
+buttonModal.addEventListener("click", () => {
+  modal2.style.display = "block"; /* Affichez la 2e modal*/
+  document.getElementById("modal1").style.display =
+    "none"; /* on cache la 1er modal*/
+});
 
 /* fleche retour sur la 2e modal*/
 const backArrow = document.querySelector(".back-arrow");
