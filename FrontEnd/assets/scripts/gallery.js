@@ -43,14 +43,28 @@ const displayWorks = (works) => {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const figcaption = document.createElement("figcaption");
+    const deleteBtn = document.querySelector(".delete-btn");
+
     img.src = work.imageUrl;
     figcaption.textContent = work.title;
+
     figure.classList.add("galleryStyle");
     figure.appendChild(img);
     figure.appendChild(figcaption);
+    figure.appendChild(deleteBtn);
     gallery.appendChild(figure);
     galleryModal.appendChild(figure);
   });
 };
+
+// creation du lien de la modal2 //
+const buttonModal = document.querySelector(".buttonModal");
+const modal2 = document.getElementById("modal2");
+
+buttonModal.addEventListener("click", () => {
+  modal2.style.display = "block"; /* Affichez la 2e modal*/
+  document.getElementById("modal1").style.display =
+    "none"; /* on cache la 1er modal*/
+});
 
 createCategoriesBtn();

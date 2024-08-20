@@ -31,7 +31,7 @@
 			<button class="fa-solid fa-xmark js-modal-close"></button>
 			<h2 id="titlemodal">Galerie photo</h2>
 			<div class="gallery-modal"></div>
-			<!-- 			<button class="fa-solid fa-trash-can delete-btn"></button>-->
+			<button class="fa-solid fa-trash-can delete-btn"></button>
 			<div class="line"></div>
 			<div href="#modal2" class="buttonModal">
 				<p>Ajouter une photo</p>
@@ -39,9 +39,10 @@
 		</section>
 	</aside>
 
-	<aside id="modal2" class="modal2" aria-hidden="true" role="modif_gallery" aria-labelledby="tittlemodal">
-		<section class="modal-wrapper2 js-modal-reset">
-			<a href="#modal1" class="fa-solid fa-arrow-left back-arrow"></a>
+	<aside id="modal2" class="modal2" aria-hidden="true" role="modif_gallery" aria-labelledby="tittlemodal"
+		style="display:none;">
+		<section class="modal-wrapper2 js-modal-reset js-modal-stop">
+			<a href="#" class="fa-solid fa-arrow-left back-arrow" data-target="#modal1"></a>
 			<button class="fa-solid fa-xmark js-modal-close"></button>
 			<h2 id="titlemodal">Ajout photo</h2>
 			<div class="image-upload">
@@ -151,7 +152,7 @@
 	<script src="assets/scripts/authenticate.js"></script>
 	<script src="assets/scripts/all-works.js"></script>
 	<script src="assets/scripts/modal.js"></script>
-	<script src="assets/scripts/filters.js"></script>
+	<script src="assets/scripts/gallery.js"></script>
 
 </body>
 

@@ -274,18 +274,6 @@ nav li {
 .gallery img {
   width: 100%;
 }
-.gallery-modal {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
-  gap: 10px;
-  justify-content: center;
-  margin: 0 60px 0 60px;
-}
-.gallery-modal img {
-  width: 80%;
-  height: auto;
-  object-fit: cover;
-}
 #contact {
   width: 50%;
   margin: auto;
@@ -483,7 +471,7 @@ footer nav ul {
 .edit.off {
   display: none;
 }
-
+/*  Modal */
 .modal {
   position: fixed;
   display: flex;
@@ -520,6 +508,7 @@ footer nav ul {
   position: relative;
   overflow: auto;
 }
+
 .modal-wrapper2 {
   width: 630px;
   height: 688px;
@@ -527,7 +516,14 @@ footer nav ul {
   border-radius: 10px;
   flex-shrink: 0;
   z-index: 1;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Décale la fenêtre de moitié de sa largeur et hauteur pour la centrer */
+  margin: 0;
   overflow: auto;
 }
 .js-modal-close {
@@ -613,6 +609,22 @@ footer nav ul {
   bottom: 90px;
   left: 105px;
 }
+
+.gallery-modal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
+  gap: 10px;
+  justify-content: center;
+  margin: 0 60px 0 60px;
+  position: relative;
+}
+.gallery-modal img {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+}
+
 .delete-btn {
   position: absolute;
   top: 10px;
