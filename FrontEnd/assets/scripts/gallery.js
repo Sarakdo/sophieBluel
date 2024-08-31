@@ -22,9 +22,13 @@ async function showWorks(arrayWorks, myGallery) {
       figure.appendChild(figcaption);
     } else {
       // creation des boutons de poubelles
+      // creation des boutons de poubelles
       const button = document.createElement("button");
       button.setAttribute("inert", "");
       button.classList.add("fa-solid", "fa-trash-can", "delete-btn");
+      const buttonDelete = document.createElement("div");
+      buttonDelete.classList.add("button-wrap");
+      buttonDelete.appendChild(button);
       const buttonDelete = document.createElement("div");
       buttonDelete.classList.add("button-wrap");
       buttonDelete.appendChild(button);
