@@ -46,7 +46,7 @@ const closeModal = function (e) {
 const stopPropagation = function (e) {
   e.stopPropagation();
 };
-//pour chaque lien href on appel openModal//
+//pour chaque lien  on appel openModal//
 document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", openModal);
   runWorks(galleryModal);
@@ -61,17 +61,14 @@ buttonModal.addEventListener("click", () => {
     "none"; /* on cache la 1er modal*/
 });
 
-/* fleche retour sur la 2e modal*/
+/* fleche retour sur la 2e modale*/
 const backArrow = document.querySelector(".back-arrow");
 // Fermez la modal 2
 backArrow.addEventListener("click", () => {
-  const modal2 = document.getElementById("modal2");
   modal2.style.display = "none";
   modal2.setAttribute("aria-hidden", "true");
-
-  // Ouvrez la modal 1
-  const modal1 = document.getElementById("modal1");
-  modal1.style.display = block;
+  // Ouvrez la modale 1
+  modal1.style.display = "block";
   modal1.removeAttribute("aria-hidden");
   modal1.setAttribute("aria-modal", "true");
 });

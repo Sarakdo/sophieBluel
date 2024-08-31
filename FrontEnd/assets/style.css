@@ -407,10 +407,10 @@ footer nav ul {
   background: black;
   color: white;
   font-size: 16px;
-  height: 59px;
   width: 1440px;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 19.5px;
+  padding-bottom: 20px;
 }
 .off {
   display: none;
@@ -581,7 +581,7 @@ footer nav ul {
   cursor: pointer;
 }
 
-.buttonModal2 {
+#buttonModal2 {
   border-radius: 60px;
   background-color: grey; /* devient vert quand la photo est selectionné*/
   color: #fff;
@@ -626,16 +626,20 @@ footer nav ul {
 }
 
 .delete-btn {
-  position: absolute;
-  top: 5px;
-  right: 14px;
-  background-color: black;
   color: white;
-  padding: 5px 10px;
-  border-radius: 8px;
+  border: none;
+  background: inherit;
+  font-size: 9px;
+  padding: 0;
+}
+.button-wrap {
+  position: absolute;
+  top: 4px;
+  right: 22px;
+  background-color: black;
+  padding: 1px 4px 2px 4px;
+  border-radius: 4px;
   cursor: pointer;
-  width: 17px;
-  height: 17px;
 }
 
 .back-arrow {
@@ -668,6 +672,7 @@ footer nav ul {
   align-items: center;
   justify-content: center;
   margin-left: 100px;
+  margin-bottom: 40px;
 }
 
 .image-upload input[type="file"] {
@@ -710,15 +715,21 @@ select {
  */
 }
 
-.container_form {
+.container_add {
   padding: 0 130px;
 }
+
+.imageLoaded {
+  width: 100%;
+}
+.login_error {
+  text-align: center;
+  color: red;
+  padding: 50px;
+}
+/* 
 
 .form-group {
   padding-top: 20px;
   padding-bottom: 10px;
-}
-/* .hidden-text {
-  display: none;
-}
- */
+} */
