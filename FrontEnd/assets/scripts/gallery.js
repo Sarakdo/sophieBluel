@@ -22,13 +22,9 @@ async function showWorks(arrayWorks, myGallery) {
       figure.appendChild(figcaption);
     } else {
       // creation des boutons de poubelles
-      // creation des boutons de poubelles
       const button = document.createElement("button");
       button.setAttribute("inert", "");
       button.classList.add("fa-solid", "fa-trash-can", "delete-btn");
-      const buttonDelete = document.createElement("div");
-      buttonDelete.classList.add("button-wrap");
-      buttonDelete.appendChild(button);
       const buttonDelete = document.createElement("div");
       buttonDelete.classList.add("button-wrap");
       buttonDelete.appendChild(button);
@@ -99,7 +95,7 @@ fileInput.addEventListener("change", async (e) => {
       // Gérer l'erreur
       console.log("Erreur lors de l'ajout de l'image");
       const errorBox = document.createElement("div");
-      const form = document.querySelector(".form-container");
+      const form = document.querySelector(".form_container");
       errorBox.className = "error-login";
       errorBox.innerHTML = "Une erreur s'est produite";
       form.appendChild(errorBox);
@@ -108,6 +104,42 @@ fileInput.addEventListener("change", async (e) => {
   reader.readAsDataURL(fileInput.files[0]);
 });
 
+const selectCategory = document.getElementById("category");
+
+fetch("http://localhost:5678/api/categories")
+  .then((response) => response.json())
+  .then((categories) => {
+    categories.forEach((category) => {
+      const option = document.createElement("option");
+      option.value = category.id;
+      option.text = category.name;
+      selectCategory.appendChild(option);
+    });
+  });
+
+const imgSelect = document.getElementById("file");
+const btnSelect = document.getElementById("buttonModal2");
+
+imgSelect.addEventListener("change", () => {
+  if (imgSelect.files.length > 0) {
+    btnSelect.classList.add("vert");
+  } else {
+    btnSelect.classList.remove("vert");
+  }
+});
+imgSelect.addEventListener("change", () => {
+  console.log("Événement change déclenché");
+  console.log(imgSelect.files.length);
+  if (imgSelect.files.length > 0) {
+    console.log("Fichier sélectionné");
+    btnSelect.classList.add("vert");
+    console.log(btnSelect.classList);
+  } else {
+    console.log("Aucun fichier sélectionné");
+    btnSelect.classList.remove("vert");
+    console.log(btnSelect.classList);
+  }
+});
 // Creation d'un message d'erreur dans le cas d'une erreur survenue//
 const errorHandling = (error) => {
   const div = document.createElement("div");

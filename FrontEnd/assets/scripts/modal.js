@@ -18,6 +18,12 @@ const openModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
+  const modal2 = document.querySelector(".modal2");
+  modal2.addEventListener("click", closeModal);
+  modal2.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal2
+    .querySelector(".js-modal-stop")
+    .addEventListener("click", stopPropagation);
 };
 
 /* fermeture de la modal */
@@ -35,12 +41,10 @@ const closeModal = function (e) {
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
   /* Ajout des événements de fermeture de la 2e modal*/
-  document
-    .querySelector("#modal2 .js-modal-close")
-    .addEventListener("click", closeModal);
-  document.querySelector("#modal2").addEventListener("click", closeModal);
-
-  modal = null;
+  /*   modal2.removeEventListener("click", closeModal);
+  modal2.querySelector(".js-modal-close").removeEventListener("click", closeModal);
+  modal2.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
+ */ modal = null;
 };
 /* evite que la page disparaisse lors d'un clique sur la page */
 const stopPropagation = function (e) {

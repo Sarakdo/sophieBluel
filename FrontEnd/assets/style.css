@@ -394,13 +394,10 @@ footer nav ul {
 }
 
 .login_error {
-  color: purple;
+  color: red;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-}
-.login_error {
-  color: red;
 }
 /*   Banner Edit   */
 .banner_edit_mode {
@@ -673,13 +670,17 @@ footer nav ul {
   justify-content: center;
   margin-left: 100px;
   margin-bottom: 40px;
+  font-size: 16px;
+  color: #ccc;
 }
-
 .image-upload input[type="file"] {
   display: none;
 }
-
-.btn-upload {
+.image-upload .upload-text {
+  font-size: 16px;
+  color: #ccc;
+}
+.btn_upload {
   border-radius: 50px;
   background-color: #cbd6dc;
   width: 176px;
@@ -695,12 +696,9 @@ footer nav ul {
   border: none;
   cursor: pointer;
   margin: 10px;
+  align-content: center;
 }
 
-.image-upload .upload-text {
-  font-size: 16px;
-  color: #ccc;
-}
 input[type="text"],
 select {
   width: 100%;
@@ -722,7 +720,10 @@ select {
 .imageLoaded {
   width: 100%;
 }
-.login_error {
+colorBtn {
+  background: #1d6154;
+}
+.error-login {
   text-align: center;
   color: red;
   padding: 50px;
