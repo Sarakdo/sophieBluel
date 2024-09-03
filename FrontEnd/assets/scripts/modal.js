@@ -18,12 +18,6 @@ const openModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
-  const modal2 = document.querySelector(".modal2");
-  modal2.addEventListener("click", closeModal);
-  modal2.querySelector(".js-modal-close").addEventListener("click", closeModal);
-  modal2
-    .querySelector(".js-modal-stop")
-    .addEventListener("click", stopPropagation);
 };
 
 /* fermeture de la modal */
@@ -40,12 +34,20 @@ const closeModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
-  /* Ajout des événements de fermeture de la 2e modal*/
-  /*   modal2.removeEventListener("click", closeModal);
-  modal2.querySelector(".js-modal-close").removeEventListener("click", closeModal);
-  modal2.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
- */ modal = null;
+  modal = null;
 };
+
+const closeModal2 = function (e) {
+  e.preventDefault();
+  modal2.style.display = "none";
+  modal2.setAttribute("aria-hidden", "true");
+  modal2.removeAttribute("aria-modal");
+  modal2 = null;
+};
+document
+  .querySelector("#modal2 .js-modal-close")
+  .addEventListener("click", closeModal2);
+
 /* evite que la page disparaisse lors d'un clique sur la page */
 const stopPropagation = function (e) {
   e.stopPropagation();
