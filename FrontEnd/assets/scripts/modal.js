@@ -74,7 +74,8 @@ backArrow.addEventListener("click", () => {
   modal2.style.display = "none";
   modal2.setAttribute("aria-hidden", "true");
   // Ouvrez la modale 1
-  modal1.style.display = "block";
+  modal1.style.display = "flex";
+  modal1.style.justifyContent = "center";
   modal1.removeAttribute("aria-hidden");
   modal1.setAttribute("aria-modal", "true");
 });

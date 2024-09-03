@@ -72,15 +72,17 @@ fileInput.addEventListener("change", async (e) => {
   const reader = new FileReader();
 
   reader.onload = async (event) => {
-    const previewImage = document.createElement("img");
+    //code exécuter lorsque le fichier est lu
+
+    const previewImage = document.createElement("img"); //crée un élément img et définit son attribut src sur les données URL du fichier
     previewImage.src = event.target.result;
     imageLoaded.innerHTML = "";
-    imageLoaded.appendChild(previewImage);
-    logoUpload.style.display = "none";
+    imageLoaded.appendChild(previewImage); //on affiche l'image
+    logoUpload.style.display = "none"; //on masque les éléments qui ne sont plus nécessaire
     containerImg.style.background = "inherit";
     uploadLabel.style.display = "none";
     uploadInfo.style.display = "none";
-    titleInput.value = "Bar New York";
+    titleInput.value = "Bar New York"; //on définit des valeurs par défaut
     categorySelect.value = "3";
 
     const response = await fetch(`http://localhost:5678/api/works/`, {
@@ -101,9 +103,10 @@ fileInput.addEventListener("change", async (e) => {
       form.appendChild(errorBox);
     }
   };
-  reader.readAsDataURL(fileInput.files[0]);
+  reader.readAsDataURL(fileInput.files[0]); //fichier est lu en tant que données URL et l'affiche en image.
 });
 
+//création de la categorie lié à l'image rajouté
 const selectCategory = document.getElementById("category");
 
 fetch("http://localhost:5678/api/categories")
@@ -117,29 +120,6 @@ fetch("http://localhost:5678/api/categories")
     });
   });
 
-const imgSelect = document.getElementById("file");
-const btnSelect = document.getElementById("buttonModal2");
-
-imgSelect.addEventListener("change", () => {
-  if (imgSelect.files.length > 0) {
-    btnSelect.classList.add("vert");
-  } else {
-    btnSelect.classList.remove("vert");
-  }
-});
-imgSelect.addEventListener("change", () => {
-  console.log("Événement change déclenché");
-  console.log(imgSelect.files.length);
-  if (imgSelect.files.length > 0) {
-    console.log("Fichier sélectionné");
-    btnSelect.classList.add("vert");
-    console.log(btnSelect.classList);
-  } else {
-    console.log("Aucun fichier sélectionné");
-    btnSelect.classList.remove("vert");
-    console.log(btnSelect.classList);
-  }
-});
 // Creation d'un message d'erreur dans le cas d'une erreur survenue//
 const errorHandling = (error) => {
   const div = document.createElement("div");
