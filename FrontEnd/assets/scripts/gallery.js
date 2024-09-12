@@ -1,10 +1,17 @@
 // Récupération de tout les works
 const gallery = document.querySelector(".gallery");
+let urlImg;
 
 const getWorks = async () => {
   const works = await fetch("http://localhost:5678/api/works");
-  const worksJson = await works.json();
-  return worksJson;
+  console.log(works);
+  if (works) {
+    const worksJson = await works.json();
+    return worksJson;
+  } else {
+    console.log("Erreur lors de la récupération des travaux");
+    return null;
+  }
 };
 
 // on affiche dans la page  d'accueil//
@@ -31,7 +38,6 @@ async function showWorks(arrayWorks, myGallery) {
       figure.style.position = "relative";
       figure.appendChild(buttonDelete);
       buttonDelete.addEventListener("click", async (event) => {
-        event.preventDefault();
         event.stopPropagation();
         console.log("Bouton de poubelle cliqué !");
 
@@ -60,50 +66,28 @@ async function showWorks(arrayWorks, myGallery) {
 // creation du clic ajout d'image
 
 const fileInput = document.getElementById("file");
-const uploadLabel = document.querySelector('label[for="file"]');
-const uploadInfo = document.querySelector(".text-upload");
 const imageLoaded = document.getElementById("image-loaded");
 const logoUpload = document.querySelector(".logo-upload");
-const containerImg = document.querySelector(".image-upload");
-const titleInput = document.getElementById("title");
-const categorySelect = document.getElementById("category");
+const imageUpload = document.querySelector(".image-upload");
+const previewImage = document.createElement("img"); //crée un élément img et définit son attribut src sur les données URL du fichier
+/* const uploadLabel = document.querySelector('label[for="file"]');
+const uploadInfo = document.querySelector(".text-upload");
+*/
 
-fileInput.addEventListener("change", async (e) => {
-  const reader = new FileReader();
-
-  reader.onload = async (event) => {
-    //code exécuter lorsque le fichier est lu
-
-    const previewImage = document.createElement("img"); //crée un élément img et définit son attribut src sur les données URL du fichier
-    previewImage.src = event.target.result;
-    imageLoaded.innerHTML = "";
-    imageLoaded.appendChild(previewImage); //on affiche l'image
-    logoUpload.style.display = "none"; //on masque les éléments qui ne sont plus nécessaire
-    containerImg.style.background = "inherit";
-    uploadLabel.style.display = "none";
-    uploadInfo.style.display = "none";
-    titleInput.value = "Bar New York"; //on définit des valeurs par défaut
-    categorySelect.value = "3";
-
-    const response = await fetch(`http://localhost:5678/api/works/`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (response.ok) {
-    } else {
-      // Gérer l'erreur
-      console.log("Erreur lors de l'ajout de l'image");
-      const errorBox = document.createElement("div");
-      const form = document.querySelector(".form_container");
-      errorBox.className = "error-login";
-      errorBox.innerHTML = "Une erreur s'est produite";
-      form.appendChild(errorBox);
-    }
-  };
-  reader.readAsDataURL(fileInput.files[0]); //fichier est lu en tant que données URL et l'affiche en image.
+//Code à exécuter lorsque l'input de fichier change
+fileInput.addEventListener("change", (e) => {
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewImage.src = e.target.result;
+      imageLoaded.appendChild(previewImage); //on affiche l'image
+      imageLoaded.style.display = "block";
+      imageUpload.style.display = "none";
+      logoUpload.style.display = "none";
+    };
+    reader.readAsDataURL(file); //fichier est lu en tant que données URL et l'affiche en image.
+  }
 });
 
 //création de la categorie lié à l'image rajouté
@@ -120,17 +104,86 @@ fetch("http://localhost:5678/api/categories")
     });
   });
 
+// Ajout d'une image via POST
+const form = document.querySelector(".container-form");
+const titleInput = document.getElementById("title");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  formData.append("image", image);
+  formData.append("title", title);
+  formData.append("category", selectCategory.value); // Ajout de la catégorie sélectionnée
+
+  fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      form.reset();
+      console.log("l'image est ajouté");
+    });
+});
+
+//Verification des elements rempli
+
+function formCompleted() {
+  const buttonValid = document.querySelector("#buttonModal2");
+  const errorBox = document.createElement("div");
+  const form = document.querySelector(".container-form");
+  let errors = []; // on declare l'erreur comme un tableau vide
+  const title = document.querySelector("#title");
+  const category = document.querySelector("#category");
+
+  form.addEventListener("input", () => {
+    errors = []; // tableau est réinitialisation pour chaque événement d’entrée
+
+    if (title.value === "") {
+      errors.push("Le champ titre est obligatoire");
+    }
+
+    if (category.value === "") {
+      errors.push("Le champ catégorie est obligatoire");
+    }
+
+    if (errors.length > 0) {
+      // s'il y a au moins 1 erreur
+      buttonValid.style.backgroundColor = "#a7a7a7";
+      errorBox.className = "error-login";
+      errorBox.innerHTML = errors.join("<br>"); // Afficher tous les messages d’erreur
+      form.appendChild(errorBox);
+      console.log("Erreur de validation");
+    } else {
+      buttonValid.style.backgroundColor = "#1d6154";
+      console.log(buttonValid);
+      console.log("Tout les champs sont remplis");
+      form.removeChild(errorBox); // on enleve les messages s'il n'y pas d'erreur
+    }
+  });
+}
+formCompleted();
+
 // Creation d'un message d'erreur dans le cas d'une erreur survenue//
 const errorHandling = (error) => {
   const div = document.createElement("div");
   div.textContent = error;
   gallery.appendChild(div);
+  console.log(error);
 };
 
 const runWorks = async (myGallery) => {
   try {
     const works = await getWorks();
-    showWorks(works, myGallery);
+    if (works) {
+      showWorks(works, myGallery);
+    } else {
+      console.log("Aucun travail récupéré");
+    }
   } catch (err) {
     errorHandling(err);
   }

@@ -36,8 +36,6 @@ const login = () => {
       sessionStorage.setItem("Sophie_Bluel_Architecte_JWT", res_json.token);
 
       // redirection sur la page d'accueil
-      // modifier la class login on en off et logout off en on; creer un listener sur logout pour supprimer le token supprimer un session storage//
-      // dans le fichier authenticate aussi changer le on en off mais verifier qu'on soit connecter avant//
       window.location.replace("./index.html");
     }
   });

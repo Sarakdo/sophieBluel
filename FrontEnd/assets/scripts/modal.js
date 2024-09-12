@@ -1,3 +1,7 @@
+/************************ CREATION DES MODALES ************************/
+
+////////////////////////////  MODAL 1
+
 const galleryModal = document.querySelector(".gallery-modal");
 
 let modal = null; /* permet de fermer la modal */
@@ -37,26 +41,8 @@ const closeModal = function (e) {
   modal = null;
 };
 
-const closeModal2 = function (e) {
-  e.preventDefault();
-  modal2.style.display = "none";
-  modal2.setAttribute("aria-hidden", "true");
-  modal2.removeAttribute("aria-modal");
-  modal2 = null;
-};
-document
-  .querySelector("#modal2 .js-modal-close")
-  .addEventListener("click", closeModal2);
+////////////////////////////  MODAL 2           ///////////////////////
 
-/* evite que la page disparaisse lors d'un clique sur la page */
-const stopPropagation = function (e) {
-  e.stopPropagation();
-};
-//pour chaque lien  on appel openModal//
-document.querySelectorAll(".js-modal").forEach((a) => {
-  a.addEventListener("click", openModal);
-  runWorks(galleryModal);
-});
 // creation du lien de la modale2 //
 const buttonModal = document.querySelector(".buttonModal");
 const modal2 = document.getElementById("modal2");
@@ -78,4 +64,26 @@ backArrow.addEventListener("click", () => {
   modal1.style.justifyContent = "center";
   modal1.removeAttribute("aria-hidden");
   modal1.setAttribute("aria-modal", "true");
+});
+
+/* fermeture de la modale 2 */
+const closeModal2 = function (e) {
+  e.preventDefault();
+  modal2.style.display = "none";
+  modal2.setAttribute("aria-hidden", "true");
+  modal2.removeAttribute("aria-modal");
+  modal2 = null;
+};
+document
+  .querySelector("#modal2 .js-modal-close")
+  .addEventListener("click", closeModal2);
+
+/* evite que la page disparaisse lors d'un clique sur la page */
+const stopPropagation = function (e) {
+  e.stopPropagation();
+};
+//pour chaque lien  on appel openModal//
+document.querySelectorAll(".js-modal").forEach((a) => {
+  a.addEventListener("click", openModal);
+  runWorks(galleryModal);
 });
