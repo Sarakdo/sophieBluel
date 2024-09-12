@@ -23,9 +23,6 @@ const login = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log("===");
-    console.log(response);
-    console.log("===");
 
     if (response.ok === false) {
       loginError.innerHTML = "Votre login ou votre mot de passe est incorrect.";

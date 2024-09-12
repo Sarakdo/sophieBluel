@@ -14,7 +14,7 @@ const openModal = function (e) {
   ); /*on cible le 1er lien de la modale*/
   target.style.display =
     null; /*on affiche la modale en enlevant le display none*/
-  target.removeAttribute("aria-hidden");
+  /*   target.removeAttribute("aria-hidden"); */
   target.setAttribute("aria-modal", "true");
   modal = target; /* on enregistre la modal dans la cible */
   modal.addEventListener("click", closeModal);
@@ -29,7 +29,7 @@ const closeModal = function (e) {
   if (modal === null) return;
   e.preventDefault();
   modal.style.display = "none";
-  modal.setAttribute("aria-hidden", "true");
+  /*  modal.setAttribute("aria-hidden", "true");*/
   modal.removeAttribute("aria-modal");
   modal.removeEventListener("click", closeModal);
   modal
@@ -48,30 +48,29 @@ const buttonModal = document.querySelector(".buttonModal");
 const modal2 = document.getElementById("modal2");
 
 buttonModal.addEventListener("click", () => {
-  modal2.style.display = "block"; /* Affichez la 2e modal*/
-  document.getElementById("modal1").style.display =
-    "none"; /* on cache la 1er modal*/
+  modal2.style.display = "block";
+  document.getElementById("modal1").style.display = "none";
 });
 
 /* fleche retour sur la 2e modale*/
 const backArrow = document.querySelector(".back-arrow");
-// Fermez la modal 2
+// Ferme la modal 2
 backArrow.addEventListener("click", () => {
   modal2.style.display = "none";
-  modal2.setAttribute("aria-hidden", "true");
-  // Ouvrez la modale 1
+  /*   modal2.setAttribute("aria-hidden", "true");
+   */ // Ouvre la modale 1
   modal1.style.display = "flex";
   modal1.style.justifyContent = "center";
-  modal1.removeAttribute("aria-hidden");
-  modal1.setAttribute("aria-modal", "true");
+  /*   modal1.removeAttribute("aria-hidden");
+   */ modal1.setAttribute("aria-modal", "true");
 });
 
 /* fermeture de la modale 2 */
 const closeModal2 = function (e) {
   e.preventDefault();
   modal2.style.display = "none";
-  modal2.setAttribute("aria-hidden", "true");
-  modal2.removeAttribute("aria-modal");
+  /*   modal2.setAttribute("aria-hidden", "true");
+   */ modal2.removeAttribute("aria-modal");
   modal2 = null;
 };
 document

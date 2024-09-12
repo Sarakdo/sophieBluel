@@ -8,7 +8,6 @@ function checkLoginStatus() {
   const editFilter = document.querySelector(".filters");
 
   if (token) {
-    console.log("Utilisateur connecté");
     authLink.innerHTML = '<a href="#" class="logout">logout</a>';
     banner.classList.add("on");
     banner.classList.remove("off");
@@ -22,8 +21,8 @@ function checkLoginStatus() {
       sessionStorage.removeItem("Sophie_Bluel_Architecte_JWT");
       location.reload();
     });
+    console.log("Utilisateur connecté");
   } else {
-    console.log("Utilisateur non connecté");
     authLink.innerHTML = '<a href="login.html">login</a>';
     banner.classList.remove("on");
     banner.classList.add("off");
@@ -31,6 +30,7 @@ function checkLoginStatus() {
     editBtn.classList.add("off");
     editFilter.classList.remove("off");
     editFilter.classList.add("on");
+    console.log("Utilisateur non connecté");
   }
 }
 

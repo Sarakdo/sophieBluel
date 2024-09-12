@@ -1,10 +1,11 @@
 // Récupération de tout les works
 const gallery = document.querySelector(".gallery");
+const buttonValid = document.querySelector("#buttonModal2");
+
 let urlImg;
 
 const getWorks = async () => {
   const works = await fetch("http://localhost:5678/api/works");
-  console.log(works);
   if (works) {
     const worksJson = await works.json();
     return worksJson;
@@ -53,6 +54,7 @@ async function showWorks(arrayWorks, myGallery) {
 
         if (response.ok) {
           figure.remove();
+          event.preventDefault();
         } else {
           // Gérer l'erreur
           console.log("Erreur lors de la suppression du work");
@@ -105,27 +107,24 @@ fetch("http://localhost:5678/api/categories")
   });
 
 // Ajout d'une image via POST
-const form = document.querySelector(".container-form");
-const titleInput = document.getElementById("title");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  formData.append("image", image);
-  formData.append("title", title);
+buttonValid.addEventListener("click", async (e) => {
+  const titleInput = document.getElementById("title");
+  const formData = new FormData();
+  formData.append("image", fileInput.files[0]);
+  formData.append("title", titleInput.value);
   formData.append("category", selectCategory.value); // Ajout de la catégorie sélectionnée
 
   fetch("http://localhost:5678/api/works", {
     method: "POST",
     body: formData,
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      form.reset();
       console.log("l'image est ajouté");
     });
 });
@@ -133,14 +132,13 @@ form.addEventListener("submit", async (e) => {
 //Verification des elements rempli
 
 function formCompleted() {
-  const buttonValid = document.querySelector("#buttonModal2");
+  let errors = []; // on declare l'erreur comme un tableau vide
   const errorBox = document.createElement("div");
   const form = document.querySelector(".container-form");
-  let errors = []; // on declare l'erreur comme un tableau vide
   const title = document.querySelector("#title");
   const category = document.querySelector("#category");
 
-  form.addEventListener("input", () => {
+  form.addEventListener("change", () => {
     errors = []; // tableau est réinitialisation pour chaque événement d’entrée
 
     if (title.value === "") {
@@ -160,7 +158,6 @@ function formCompleted() {
       console.log("Erreur de validation");
     } else {
       buttonValid.style.backgroundColor = "#1d6154";
-      console.log(buttonValid);
       console.log("Tout les champs sont remplis");
       form.removeChild(errorBox); // on enleve les messages s'il n'y pas d'erreur
     }
@@ -173,7 +170,6 @@ const errorHandling = (error) => {
   const div = document.createElement("div");
   div.textContent = error;
   gallery.appendChild(div);
-  console.log(error);
 };
 
 const runWorks = async (myGallery) => {
